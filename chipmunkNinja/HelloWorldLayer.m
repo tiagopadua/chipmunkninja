@@ -3,7 +3,6 @@
 //  chipmunkNinja
 //
 //  Created by Tiago Padua on 31/1/12.
-//  Copyright Terra Networks 2012. All rights reserved.
 //
 
 
@@ -46,6 +45,7 @@
 	
         CGSize size = [[CCDirector sharedDirector] winSize];
 
+        score = 0.0f;
         background = [CCSprite spriteWithFile: @"background.png" rect:CGRectMake(0, 0, size.width, 480*1000)];
       //  background2 = [CCSprite spriteWithFile: @"background.png"];
         chipmunk = [CCSprite spriteWithFile: @"chipmunk1.png"];
@@ -126,9 +126,15 @@
     double newPosY = chipmunk.position.y + VEL_SLIDE * dt ;
     if(isTouching){
         newPosY = chipmunk.position.y + MAX(VEL_SLIDE * dt, jumpPower * dt);
+        jumpPower -= GRAVITY * JUMP_HOLD_FACTOR * dt;
     }
-    chipmunk.position = ccp(chipmunk.position.x, newPosY);    
-    jumpPower -= GRAVITY * JUMP_HOLD_FACTOR * dt;
+    
+    // Evita deslizar mais no inicio do jogo
+    double chipmunkZero = chipmunk.contentSize.height / 2;
+    if ((score <= 0) && (newPosY < chipmunkZero)) {
+        newPosY = chipmunkZero;
+    }
+    chipmunk.position = ccp(chipmunk.position.x, newPosY);
 }
 
 - (void) checkDeath{
