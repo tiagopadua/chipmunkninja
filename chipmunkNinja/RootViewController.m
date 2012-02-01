@@ -44,7 +44,7 @@
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	
+	return NO; // TODO: Verificar se é isso mesmo.
 	//
 	// There are 2 ways to support auto-rotation:
 	//  - The OpenGL / cocos2d way
