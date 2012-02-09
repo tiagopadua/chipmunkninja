@@ -30,11 +30,11 @@
 
 #define LEFT TRUE
 #define RIGHT FALSE
-#define VEL_SLIDE -100.0f
-#define VEL_X 500.0f
-#define GRAVITY 200.0f
-#define JUMP_POWER_START 400.0f
-#define JUMP_HOLD_FACTOR 10.0f
+#define VEL_SLIDE -200.0f
+#define VEL_X 300.0f
+#define GRAVITY 1000.0f
+#define JUMP_POWER_START 600.0f
+#define JUMP_HOLD_FACTOR 3.0f
 
 // on "init" you need to initialize your instance
 -(id) init
@@ -126,7 +126,7 @@
     double newPosY = chipmunk.position.y + VEL_SLIDE * dt ;
     if(isTouching){
         newPosY = chipmunk.position.y + MAX(VEL_SLIDE * dt, jumpPower * dt);
-        jumpPower -= GRAVITY * JUMP_HOLD_FACTOR * dt;
+        jumpPower -= GRAVITY * JUMP_HOLD_FACTOR * dt * 3;
     }
     
     // Evita deslizar mais no inicio do jogo
@@ -157,15 +157,17 @@
 - (void) animateChipmunk:(ccTime)dt{
     
     if(isJumping){
+        double deltaX = VEL_X*dt;
+        if (isTouching) deltaX *= JUMP_HOLD_FACTOR;
         if(chipmunkSide == LEFT){
-            chipmunk.position = ccp(chipmunk.position.x + VEL_X*dt, chipmunk.position.y + jumpPower*dt);
+            chipmunk.position = ccp(chipmunk.position.x + deltaX, chipmunk.position.y + jumpPower*dt);
             if (chipmunk.position.x >= treeRight.position.x - (treeRight.contentSize.width/2)) {
                 chipmunk.position = ccp(treeRight.position.x - (treeRight.contentSize.width/2), chipmunk.position.y);
                 isJumping = FALSE;
                 chipmunkSide = RIGHT;
             }
         } else {
-            chipmunk.position = ccp(chipmunk.position.x - VEL_X*dt, chipmunk.position.y + jumpPower*dt);
+            chipmunk.position = ccp(chipmunk.position.x - deltaX, chipmunk.position.y + jumpPower*dt);
             
             if (chipmunk.position.x <= treeLeft.contentSize.width) {
                 chipmunk.position = ccp(treeLeft.contentSize.width, chipmunk.position.y);
