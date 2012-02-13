@@ -5,19 +5,32 @@
 //  Created by Tiago Padua on 31/1/12.
 //
 
-
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 #import "CCTouchDispatcher.h"
+#import "Level.h"
+
 // HelloWorldLayer
-@interface HelloWorldLayer : CCLayer
+@interface Engine: CCLayer
 {
-    CCSprite *background;
-    CCSprite *background2;
+    CGSize size;
+
+    Background *background;
     CCSprite *treeLeft;
     CCSprite *treeRight;
     CCSprite *chipmunk;
+    CCSprite *thornLeft[5];
+    CCSprite *thornRight[5];
     CCLabelTTF *scoreLabel;
+    CCArray *activeThorn;
+    
+    Level *level;
+    
+    double lastThornScore;
+    BOOL lastThornSide;
+    int lastLeftIndex;
+    int lastRightIndex;
+    
     double score;
     double jumpPower;
     BOOL backgroundState;
@@ -25,6 +38,7 @@
     BOOL isTouching;
     BOOL chipmunkSide;
 }
+
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event;
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event;
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>levelHeight</key>
+	<integer>10</integer>
+	<key>gravity</key>
+	<integer>1000</integer>
+	<key>jumpPower</key>
+	<integer>600</integer>
+	<key>jumpFactor</key>
+	<integer>4</integer>
+	<key>slideSpeed</key>
+	<integer>-200</integer>
+	<key>horizontalSpeed</key>
+	<integer>500</integer>
+	<key>horizontalSpeedFactor</key>
+	<real>1.5</real>
+</dict>
+</plist>

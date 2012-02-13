@@ -121,13 +121,19 @@
 		E3B75F0914D8AA6800222EBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B75F0814D8AA6800222EBB /* main.m */; };
 		E3B75F0C14D8AA6800222EBB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B75F0B14D8AA6800222EBB /* AppDelegate.m */; };
 		E3B75F0F14D8AA6800222EBB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B75F0E14D8AA6800222EBB /* RootViewController.m */; };
-		E3B75F1214D8AA6800222EBB /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B75F1114D8AA6800222EBB /* HelloWorldLayer.m */; };
 		E3B75F1E14D8ABF000222EBB /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B75F1914D8ABEF00222EBB /* background.png */; };
 		E3B75F1F14D8ABF000222EBB /* tree-left.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B75F1A14D8ABF000222EBB /* tree-left.png */; };
 		E3B75F2014D8ABF000222EBB /* tree-right.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B75F1B14D8ABF000222EBB /* tree-right.png */; };
 		E3B75F2114D8ABF000222EBB /* tree-root-left.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B75F1C14D8ABF000222EBB /* tree-root-left.png */; };
 		E3B75F2214D8ABF000222EBB /* tree-root-right.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B75F1D14D8ABF000222EBB /* tree-root-right.png */; };
 		E3B75F2414D8B90600222EBB /* chipmunk1.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B75F2314D8B90600222EBB /* chipmunk1.png */; };
+		E3B8343914E80B6800266C93 /* Level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3B8343814E80B6800266C93 /* Level1.plist */; };
+		E3B8343F14E81AC600266C93 /* Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B8343E14E81AC600266C93 /* Tree.m */; };
+		E3B8344214E826BD00266C93 /* Chipmunk.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B8344114E826BD00266C93 /* Chipmunk.m */; };
+		E3BFEBBE14E73A68002621FF /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BFEBBD14E73A68002621FF /* Level.m */; };
+		E3BFEBC314E74754002621FF /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BFEBC214E74754002621FF /* Background.m */; };
+		E3F632F514E3436500B61FEE /* Engine.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F632F414E3436500B61FEE /* Engine.m */; };
+		E3F632F714E34A3100B61FEE /* thorn-left.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F632F614E34A3100B61FEE /* thorn-left.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -363,8 +369,7 @@
 		E3B75F0B14D8AA6800222EBB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E3B75F0D14D8AA6800222EBB /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		E3B75F0E14D8AA6800222EBB /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		E3B75F1014D8AA6800222EBB /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		E3B75F1114D8AA6800222EBB /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
+		E3B75F1014D8AA6800222EBB /* Engine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
 		E3B75F1314D8AA6800222EBB /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		E3B75F1914D8ABEF00222EBB /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		E3B75F1A14D8ABF000222EBB /* tree-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tree-left.png"; sourceTree = "<group>"; };
@@ -372,6 +377,17 @@
 		E3B75F1C14D8ABF000222EBB /* tree-root-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tree-root-left.png"; sourceTree = "<group>"; };
 		E3B75F1D14D8ABF000222EBB /* tree-root-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tree-root-right.png"; sourceTree = "<group>"; };
 		E3B75F2314D8B90600222EBB /* chipmunk1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chipmunk1.png; sourceTree = "<group>"; };
+		E3B8343814E80B6800266C93 /* Level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level1.plist; sourceTree = "<group>"; };
+		E3B8343D14E81AC500266C93 /* Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tree.h; sourceTree = "<group>"; };
+		E3B8343E14E81AC600266C93 /* Tree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tree.m; sourceTree = "<group>"; };
+		E3B8344014E826BD00266C93 /* Chipmunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chipmunk.h; sourceTree = "<group>"; };
+		E3B8344114E826BD00266C93 /* Chipmunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chipmunk.m; sourceTree = "<group>"; };
+		E3BFEBBC14E73A68002621FF /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		E3BFEBBD14E73A68002621FF /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
+		E3BFEBC114E74754002621FF /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
+		E3BFEBC214E74754002621FF /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
+		E3F632F414E3436500B61FEE /* Engine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Engine.m; sourceTree = "<group>"; };
+		E3F632F614E34A3100B61FEE /* thorn-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thorn-left.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,13 +444,7 @@
 		E3B75DB814D8AA6400222EBB /* chipmunkNinja */ = {
 			isa = PBXGroup;
 			children = (
-				E3B75F0A14D8AA6800222EBB /* AppDelegate.h */,
-				E3B75F0B14D8AA6800222EBB /* AppDelegate.m */,
-				E3B75F0D14D8AA6800222EBB /* RootViewController.h */,
-				E3B75F0E14D8AA6800222EBB /* RootViewController.m */,
-				E3B75F1014D8AA6800222EBB /* HelloWorldLayer.h */,
-				E3B75F1114D8AA6800222EBB /* HelloWorldLayer.m */,
-				E3B75F1314D8AA6800222EBB /* GameConfig.h */,
+				E3BFEBB914E7166D002621FF /* source */,
 				E3B75DB914D8AA6400222EBB /* Resources */,
 				E3B75DCD14D8AA6400222EBB /* libs */,
 				E3B75F0614D8AA6800222EBB /* Supporting Files */,
@@ -445,16 +455,12 @@
 		E3B75DB914D8AA6400222EBB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E3B8343C14E80CD800266C93 /* Levels */,
+				E3B8343B14E80CBE00266C93 /* Sprites */,
 				E3B75DBA14D8AA6400222EBB /* Default.png */,
-				E3B75F1914D8ABEF00222EBB /* background.png */,
-				E3B75F1A14D8ABF000222EBB /* tree-left.png */,
-				E3B75F1B14D8ABF000222EBB /* tree-right.png */,
-				E3B75F1C14D8ABF000222EBB /* tree-root-left.png */,
-				E3B75F1D14D8ABF000222EBB /* tree-root-right.png */,
 				E3B75DBC14D8AA6400222EBB /* fps_images.png */,
 				E3B75DBE14D8AA6400222EBB /* Icon-72.png */,
 				E3B75DC014D8AA6400222EBB /* Icon-Small-50.png */,
-				E3B75F2314D8B90600222EBB /* chipmunk1.png */,
 				E3B75DC214D8AA6400222EBB /* Icon-Small.png */,
 				E3B75DC414D8AA6400222EBB /* Icon-Small@2x.png */,
 				E3B75DC614D8AA6400222EBB /* Icon.png */,
@@ -776,6 +782,74 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E3B8343B14E80CBE00266C93 /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				E3B75F2314D8B90600222EBB /* chipmunk1.png */,
+				E3F632F614E34A3100B61FEE /* thorn-left.png */,
+				E3B75F1914D8ABEF00222EBB /* background.png */,
+				E3B75F1A14D8ABF000222EBB /* tree-left.png */,
+				E3B75F1B14D8ABF000222EBB /* tree-right.png */,
+				E3B75F1C14D8ABF000222EBB /* tree-root-left.png */,
+				E3B75F1D14D8ABF000222EBB /* tree-root-right.png */,
+			);
+			name = Sprites;
+			sourceTree = "<group>";
+		};
+		E3B8343C14E80CD800266C93 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				E3B8343814E80B6800266C93 /* Level1.plist */,
+			);
+			name = Levels;
+			sourceTree = "<group>";
+		};
+		E3BFEBB914E7166D002621FF /* source */ = {
+			isa = PBXGroup;
+			children = (
+				E3BFEBBF14E73DDC002621FF /* Menu */,
+				E3BFEBC014E746FB002621FF /* Sprites */,
+				E3BFEBBB14E73A20002621FF /* Engine */,
+				E3B75F0A14D8AA6800222EBB /* AppDelegate.h */,
+				E3B75F0B14D8AA6800222EBB /* AppDelegate.m */,
+				E3B75F0D14D8AA6800222EBB /* RootViewController.h */,
+				E3B75F0E14D8AA6800222EBB /* RootViewController.m */,
+				E3B75F1314D8AA6800222EBB /* GameConfig.h */,
+			);
+			name = source;
+			sourceTree = "<group>";
+		};
+		E3BFEBBB14E73A20002621FF /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				E3F632F414E3436500B61FEE /* Engine.m */,
+				E3B75F1014D8AA6800222EBB /* Engine.h */,
+				E3BFEBBC14E73A68002621FF /* Level.h */,
+				E3BFEBBD14E73A68002621FF /* Level.m */,
+			);
+			name = Engine;
+			sourceTree = "<group>";
+		};
+		E3BFEBBF14E73DDC002621FF /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		E3BFEBC014E746FB002621FF /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				E3BFEBC114E74754002621FF /* Background.h */,
+				E3BFEBC214E74754002621FF /* Background.m */,
+				E3B8343D14E81AC500266C93 /* Tree.h */,
+				E3B8343E14E81AC600266C93 /* Tree.m */,
+				E3B8344014E826BD00266C93 /* Chipmunk.h */,
+				E3B8344114E826BD00266C93 /* Chipmunk.m */,
+			);
+			name = Sprites;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -842,6 +916,8 @@
 				E3B75F2114D8ABF000222EBB /* tree-root-left.png in Resources */,
 				E3B75F2214D8ABF000222EBB /* tree-root-right.png in Resources */,
 				E3B75F2414D8B90600222EBB /* chipmunk1.png in Resources */,
+				E3F632F714E34A3100B61FEE /* thorn-left.png in Resources */,
+				E3B8343914E80B6800266C93 /* Level1.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -949,7 +1025,11 @@
 				E3B75F0914D8AA6800222EBB /* main.m in Sources */,
 				E3B75F0C14D8AA6800222EBB /* AppDelegate.m in Sources */,
 				E3B75F0F14D8AA6800222EBB /* RootViewController.m in Sources */,
-				E3B75F1214D8AA6800222EBB /* HelloWorldLayer.m in Sources */,
+				E3F632F514E3436500B61FEE /* Engine.m in Sources */,
+				E3BFEBBE14E73A68002621FF /* Level.m in Sources */,
+				E3BFEBC314E74754002621FF /* Background.m in Sources */,
+				E3B8343F14E81AC600266C93 /* Tree.m in Sources */,
+				E3B8344214E826BD00266C93 /* Chipmunk.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1043,6 +1123,7 @@
 				E3B75F1814D8AA6800222EBB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
