@@ -130,6 +130,8 @@
 		E3B8343914E80B6800266C93 /* Level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3B8343814E80B6800266C93 /* Level1.plist */; };
 		E3B8343F14E81AC600266C93 /* Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B8343E14E81AC600266C93 /* Tree.m */; };
 		E3B8344214E826BD00266C93 /* Chipmunk.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B8344114E826BD00266C93 /* Chipmunk.m */; };
+		E3BCA34614EDC8EE007D136E /* level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3BCA34414EDC8EE007D136E /* level1.plist */; };
+		E3BCA34714EDC8EE007D136E /* level1.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BCA34514EDC8EE007D136E /* level1.png */; };
 		E3BFEBBE14E73A68002621FF /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BFEBBD14E73A68002621FF /* Level.m */; };
 		E3BFEBC314E74754002621FF /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BFEBC214E74754002621FF /* Background.m */; };
 		E3F632F514E3436500B61FEE /* Engine.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F632F414E3436500B61FEE /* Engine.m */; };
@@ -382,6 +384,8 @@
 		E3B8343E14E81AC600266C93 /* Tree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tree.m; sourceTree = "<group>"; };
 		E3B8344014E826BD00266C93 /* Chipmunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chipmunk.h; sourceTree = "<group>"; };
 		E3B8344114E826BD00266C93 /* Chipmunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chipmunk.m; sourceTree = "<group>"; };
+		E3BCA34414EDC8EE007D136E /* level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level1.plist; sourceTree = "<group>"; };
+		E3BCA34514EDC8EE007D136E /* level1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level1.png; sourceTree = "<group>"; };
 		E3BFEBBC14E73A68002621FF /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 		E3BFEBBD14E73A68002621FF /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
 		E3BFEBC114E74754002621FF /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
@@ -412,6 +416,7 @@
 		E3B75D9914D8AA6400222EBB = {
 			isa = PBXGroup;
 			children = (
+				E3BCA34314EDC8EE007D136E /* Images */,
 				E3B75DB814D8AA6400222EBB /* chipmunkNinja */,
 				E3B75DA714D8AA6400222EBB /* Frameworks */,
 				E3B75DA514D8AA6400222EBB /* Products */,
@@ -804,6 +809,16 @@
 			name = Levels;
 			sourceTree = "<group>";
 		};
+		E3BCA34314EDC8EE007D136E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E3BCA34414EDC8EE007D136E /* level1.plist */,
+				E3BCA34514EDC8EE007D136E /* level1.png */,
+			);
+			name = Images;
+			path = chipmunkNinja/Images;
+			sourceTree = "<group>";
+		};
 		E3BFEBB914E7166D002621FF /* source */ = {
 			isa = PBXGroup;
 			children = (
@@ -816,7 +831,7 @@
 				E3B75F0E14D8AA6800222EBB /* RootViewController.m */,
 				E3B75F1314D8AA6800222EBB /* GameConfig.h */,
 			);
-			name = source;
+			path = source;
 			sourceTree = "<group>";
 		};
 		E3BFEBBB14E73A20002621FF /* Engine */ = {
@@ -918,6 +933,8 @@
 				E3B75F2414D8B90600222EBB /* chipmunk1.png in Resources */,
 				E3F632F714E34A3100B61FEE /* thorn-left.png in Resources */,
 				E3B8343914E80B6800266C93 /* Level1.plist in Resources */,
+				E3BCA34614EDC8EE007D136E /* level1.plist in Resources */,
+				E3BCA34714EDC8EE007D136E /* level1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

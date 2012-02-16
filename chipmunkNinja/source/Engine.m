@@ -97,7 +97,6 @@
             [activeThorn removeObject:currentThorn];
         }
     }
-
     if ( (score - lastThornScore) > 120) {
         if (lastThornSide == RIGHT) {
             [activeThorn addObject:thornRight[lastRightIndex++]];
