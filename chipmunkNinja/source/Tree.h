@@ -14,4 +14,6 @@
 -(Tree*) init:(NSString*)imageFile withWindowSize:(CGSize)windowSize andHeightMultiplier:(double)heightTimes andPositionRight:(BOOL)flipRight;
 -(void)dealloc;
 
+-(void) nextFrame:(double)dy;
+
 @end

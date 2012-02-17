@@ -13,4 +13,6 @@
 - (Chipmunk*) init:(NSString*)imageFile;
 - (void) dealloc;
 
+- (void) slideDown:(ccTime)dt;
+
 @end

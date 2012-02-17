@@ -13,4 +13,6 @@
 -(Background*) init:(NSString*)imageFile withWindowSize:(CGSize)windowSize andHeightMultiplier:(double)heightTimes;
 -(void)dealloc;
 
+-(void) nextFrame:(double)dy;
+
 @end

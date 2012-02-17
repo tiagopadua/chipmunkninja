@@ -18,6 +18,8 @@
 -(Level*) init:(NSString *)propertyFile withWindowSize:(CGSize)windowSize {
     self = [super init];
     if (self) {
+        _windowSize = windowSize;
+
         // Read the property file
         if (propertyFile) {
             NSDictionary *plist = [self getPlist:propertyFile];
@@ -29,11 +31,19 @@
             _VEL_X_HOLD_FACTOR = ((NSNumber*)[plist objectForKey:@"horizontalSpeedFactor"]).doubleValue;
             _LEVEL_HEIGHT = ((NSNumber*)[plist objectForKey:@"levelHeight"]).doubleValue;
         }
+
+        _thorns = [[CCArray alloc] initWithCapacity:INITIAL_THORN_COUNT];
+
         //Create the sprites
         _chipmunk = [[Chipmunk alloc] init:@"chipmunk1.png"];
-        _background = [[Background alloc] init:@"background.png" withWindowSize:windowSize andHeightMultiplier:_LEVEL_HEIGHT/BACKGROUND_SPEED_FACTOR];
-        _treeLeft = [[Tree alloc] init:@"tree-left.png" withWindowSize:windowSize andHeightMultiplier:_LEVEL_HEIGHT];
-        _treeRight = [[Tree alloc] init:@"tree-left.png" withWindowSize:windowSize andHeightMultiplier:_LEVEL_HEIGHT andPositionRight:TRUE];
+        _background = [[Background alloc] init:@"background.png" withWindowSize:_windowSize andHeightMultiplier:_LEVEL_HEIGHT/BACKGROUND_SPEED_FACTOR];
+        _treeLeft = [[Tree alloc] init:@"tree-left.png" withWindowSize:_windowSize andHeightMultiplier:_LEVEL_HEIGHT];
+        _treeRight = [[Tree alloc] init:@"tree-left.png" withWindowSize:_windowSize andHeightMultiplier:_LEVEL_HEIGHT andPositionRight:TRUE];
+
+//        for (int i=0; i<INITIAL_THORN_COUNT; ++i) {
+//            [_thorns addObject:[[Thorn alloc] init:@"thorn-left.png" withWindowSize:windowSize andTreeWidth:_treeLeft.contentSize.width]];
+//            [_thorns addObject:[[Thorn alloc] init:@"thorn-left.png" withWindowSize:windowSize andTreeWidth:_treeLeft.contentSize.width andPositionRight:TRUE]];
+//        }
     }
     return self;
 }
@@ -57,6 +67,14 @@
 }
 - (Tree*) getTreeRight {
     return _treeRight;
+}
+- (CCArray*) getThorns {
+    return _thorns;
+}
+- (Thorn*) newThorn:(BOOL)isRight {
+    Thorn *currentThorn = [[Thorn alloc] init:@"thorn-left.png" withWindowSize:_windowSize andTreeWidth:_treeLeft.contentSize.width andPositionRight:isRight];
+    [_thorns addObject:currentThorn];
+    return currentThorn;
 }
 
 - (double) GRAVITY { return _GRAVITY; }

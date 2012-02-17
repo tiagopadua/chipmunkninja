@@ -15,8 +15,8 @@
 }
 -(Tree*) init:(NSString*)imageFile withWindowSize:(CGSize)windowSize andHeightMultiplier:(double)heightTimes andPositionRight:(BOOL)flipRight {
     self = [CCSprite spriteWithFile:imageFile rect:CGRectMake(0, 0, 43, windowSize.height*heightTimes)];
-    self.flipX = flipRight;
     if (self) {
+        self.flipX = flipRight;
         self.anchorPoint = ccp(0,0);
         self.position = ccp(flipRight ? windowSize.width-self.contentSize.width : 0, 0);
         ccTexParams params = {GL_LINEAR,GL_LINEAR,GL_REPEAT,GL_REPEAT};
@@ -26,6 +26,10 @@
 }
 -(void)dealloc {
     [super dealloc];
+}
+
+-(void) nextFrame:(double)dy {
+    self.position = ccp(self.position.x, self.position.y - dy);
 }
 
 @end

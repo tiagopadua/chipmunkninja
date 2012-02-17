@@ -19,13 +19,10 @@
     CCSprite *treeLeft;
     CCSprite *treeRight;
     CCSprite *chipmunk;
-    CCSprite *thornLeft[5];
-    CCSprite *thornRight[5];
     CCLabelTTF *scoreLabel;
-    CCArray *activeThorn;
     
     Level *level;
-    
+
     double lastThornScore;
     BOOL lastThornSide;
     int lastLeftIndex;

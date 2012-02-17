@@ -10,6 +10,8 @@
 
 @implementation Background
 
+#define BACKGROUND_SPEED_FACTOR 2
+
 -(Background*) init:(NSString*)imageFile withWindowSize:(CGSize)windowSize andHeightMultiplier:(double)heightTimes {
     self = [CCSprite spriteWithFile:imageFile rect:CGRectMake(0, 0, windowSize.width, windowSize.height*heightTimes)];
     if (self) {
@@ -22,6 +24,10 @@
 }
 -(void)dealloc {
     [super dealloc];
+}
+
+-(void) nextFrame:(double)dy {
+    self.position = ccp(self.position.x, self.position.y - (dy/BACKGROUND_SPEED_FACTOR) );
 }
 
 @end
