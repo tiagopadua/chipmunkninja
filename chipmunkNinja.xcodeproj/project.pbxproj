@@ -21,7 +21,6 @@
 		974C0E3D14EDD68E00EFCE9C /* configLevel1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 974C0E3B14EDD68E00EFCE9C /* configLevel1.plist */; };
 		974C0E4114EDD7B000EFCE9C /* BaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 974C0E4014EDD7B000EFCE9C /* BaseObject.m */; };
 		974C0E4314EDDC4600EFCE9C /* chipmunk.plist in Resources */ = {isa = PBXBuildFile; fileRef = 974C0E4214EDDC4600EFCE9C /* chipmunk.plist */; };
-		974C0E4614EDE10300EFCE9C /* TempObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 974C0E4514EDE10300EFCE9C /* TempObject.m */; };
 		E3B75DA914D8AA6400222EBB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B75DA814D8AA6400222EBB /* QuartzCore.framework */; };
 		E3B75DAB14D8AA6400222EBB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B75DAA14D8AA6400222EBB /* OpenGLES.framework */; };
 		E3B75DAD14D8AA6400222EBB /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B75DAC14D8AA6400222EBB /* OpenAL.framework */; };
@@ -138,6 +137,7 @@
 		E3B75F0F14D8AA6800222EBB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B75F0E14D8AA6800222EBB /* RootViewController.m */; };
 		E3B8343F14E81AC600266C93 /* Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B8343E14E81AC600266C93 /* Tree.m */; };
 		E3B8344214E826BD00266C93 /* Chipmunk.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B8344114E826BD00266C93 /* Chipmunk.m */; };
+		E3BC89A814EDF74F00AEBD2D /* Thorn.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BC89A714EDF74F00AEBD2D /* Thorn.m */; };
 		E3BCA34614EDC8EE007D136E /* level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3BCA34414EDC8EE007D136E /* level1.plist */; };
 		E3BCA34714EDC8EE007D136E /* level1.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BCA34514EDC8EE007D136E /* level1.png */; };
 		E3BFEBBE14E73A68002621FF /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = E3BFEBBD14E73A68002621FF /* Level.m */; };
@@ -173,8 +173,6 @@
 		974C0E3F14EDD7B000EFCE9C /* BaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseObject.h; sourceTree = "<group>"; };
 		974C0E4014EDD7B000EFCE9C /* BaseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseObject.m; sourceTree = "<group>"; };
 		974C0E4214EDDC4600EFCE9C /* chipmunk.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = chipmunk.plist; sourceTree = "<group>"; };
-		974C0E4414EDE10300EFCE9C /* TempObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempObject.h; sourceTree = "<group>"; };
-		974C0E4514EDE10300EFCE9C /* TempObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempObject.m; sourceTree = "<group>"; };
 		E3B75DA414D8AA6400222EBB /* chipmunkNinja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chipmunkNinja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3B75DA814D8AA6400222EBB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E3B75DAA14D8AA6400222EBB /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -413,6 +411,8 @@
 		E3B8343E14E81AC600266C93 /* Tree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tree.m; sourceTree = "<group>"; };
 		E3B8344014E826BD00266C93 /* Chipmunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chipmunk.h; sourceTree = "<group>"; };
 		E3B8344114E826BD00266C93 /* Chipmunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chipmunk.m; sourceTree = "<group>"; };
+		E3BC89A614EDF74F00AEBD2D /* Thorn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thorn.h; sourceTree = "<group>"; };
+		E3BC89A714EDF74F00AEBD2D /* Thorn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Thorn.m; sourceTree = "<group>"; };
 		E3BCA34414EDC8EE007D136E /* level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level1.plist; sourceTree = "<group>"; };
 		E3BCA34514EDC8EE007D136E /* level1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level1.png; sourceTree = "<group>"; };
 		E3BFEBBC14E73A68002621FF /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
@@ -459,13 +459,6 @@
 				974C0E1514EDCCA500EFCE9C /* GameConstants.h */,
 			);
 			name = constants;
-			sourceTree = "<group>";
-		};
-		974C0E3014EDCFE100EFCE9C /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
 			sourceTree = "<group>";
 		};
 		974C0E3A14EDD68E00EFCE9C /* plist */ = {
@@ -864,7 +857,6 @@
 		E3BFEBB914E7166D002621FF /* source */ = {
 			isa = PBXGroup;
 			children = (
-				974C0E3014EDCFE100EFCE9C /* New Group */,
 				974C0E2F14EDCCEF00EFCE9C /* constants */,
 				974C0E2E14EDCCD600EFCE9C /* Singletons */,
 				974C0E1614EDCCA500EFCE9C /* GameLayer.h */,
@@ -917,6 +909,8 @@
 		E3BFEBC014E746FB002621FF /* GameObjects */ = {
 			isa = PBXGroup;
 			children = (
+				E3BC89A614EDF74F00AEBD2D /* Thorn.h */,
+				E3BC89A714EDF74F00AEBD2D /* Thorn.m */,
 				E3BFEBC114E74754002621FF /* Background.h */,
 				E3BFEBC214E74754002621FF /* Background.m */,
 				E3B8343D14E81AC500266C93 /* Tree.h */,
@@ -925,8 +919,6 @@
 				E3B8344114E826BD00266C93 /* Chipmunk.m */,
 				974C0E3F14EDD7B000EFCE9C /* BaseObject.h */,
 				974C0E4014EDD7B000EFCE9C /* BaseObject.m */,
-				974C0E4414EDE10300EFCE9C /* TempObject.h */,
-				974C0E4514EDE10300EFCE9C /* TempObject.m */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
@@ -1119,7 +1111,7 @@
 				974C0E3614EDD01500EFCE9C /* Level1Layer.m in Sources */,
 				974C0E3914EDD02700EFCE9C /* Level1Scene.m in Sources */,
 				974C0E4114EDD7B000EFCE9C /* BaseObject.m in Sources */,
-				974C0E4614EDE10300EFCE9C /* TempObject.m in Sources */,
+				E3BC89A814EDF74F00AEBD2D /* Thorn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

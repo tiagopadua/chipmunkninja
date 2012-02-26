@@ -7,12 +7,14 @@
 //
 
 #import "cocos2d.h"
+#import "GameConstants.h"
+@interface Background : CCParallaxNode{
+    CGSize screenSize;
+}
 
-@interface Background : CCSprite
-
--(Background*) init:(NSString*)imageFile withWindowSize:(CGSize)windowSize andHeightMultiplier:(double)heightTimes;
+-(Background*) init:(CGSize)screenSize;
 -(void)dealloc;
 
--(void) nextFrame:(double)dy;
+-(void) updateStateWithDeltaTime:(ccTime)deltaTime;
 
 @end

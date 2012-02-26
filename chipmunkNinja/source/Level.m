@@ -35,8 +35,8 @@
         _thorns = [[CCArray alloc] initWithCapacity:INITIAL_THORN_COUNT];
 
         //Create the sprites
-        _chipmunk = [[Chipmunk alloc] init:@"chipmunk1.png"];
-        _background = [[Background alloc] init:@"background.png" withWindowSize:_windowSize andHeightMultiplier:_LEVEL_HEIGHT/BACKGROUND_SPEED_FACTOR];
+//        _chipmunk = [[Chipmunk alloc] init:@"chipmunk1.png"];
+//        _background = [[Background alloc] init:@"background.png" withWindowSize:_windowSize andHeightMultiplier:_LEVEL_HEIGHT/BACKGROUND_SPEED_FACTOR];
         _treeLeft = [[Tree alloc] init:@"tree-left.png" withWindowSize:_windowSize andHeightMultiplier:_LEVEL_HEIGHT];
         _treeRight = [[Tree alloc] init:@"tree-left.png" withWindowSize:_windowSize andHeightMultiplier:_LEVEL_HEIGHT andPositionRight:TRUE];
 

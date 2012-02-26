@@ -8,12 +8,13 @@ typedef enum {
 
 typedef enum {
     kStateIdle,
-    kStateStandingUp,
-    kStateJumping,
     kStateBreathing,
+    kStateFirstJumping,
+    kStateJumping,
+    kStateFlying,
+    kStateHolding,
     kStateTakingDamage,
-    kStateDead,
-    kStateAfterJumping
+    kStateDead
 } CharacterStates;
 
 typedef enum {
@@ -25,6 +26,10 @@ typedef enum {
     kBackground,
     kStar
 } GameObjectType;
+
+@protocol ChipmunkDelegate
+-(void)onUpdateBackground:(double)deltaY;
+@end
 
 @protocol GameplayLayerDelegate
 -(void)createObjectOfType:(GameObjectType)objectType 

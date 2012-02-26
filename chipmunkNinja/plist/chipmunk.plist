@@ -2,14 +2,59 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>jump</key>
+	<key>firstJump</key>
 	<dict>
 		<key>filenamePrefix</key>
 		<string>chipmunk</string>
 		<key>delay</key>
-		<real>0.2</real>
+		<real>0.01</real>
 		<key>animationFrames</key>
-		<string>2,3,4,5,6,7,8,9</string>
-	</dict>	
+		<string>2,3,4,5</string>
+	</dict>
+	<key>idle</key>
+	<dict>
+		<key>filenamePrefix</key>
+		<string>chipmunk</string>
+		<key>delay</key>
+		<real>0.08</real>
+		<key>animationFrames</key>
+		<string>1</string>
+	</dict>
+	<key>breathing</key>
+	<dict>
+		<key>filenamePrefix</key>
+		<string>chipmunk</string>
+		<key>delay</key>
+		<real>0.5</real>
+		<key>animationFrames</key>
+		<string>1,2</string>
+	</dict>
+	<key>flying</key>
+	<dict>
+		<key>filenamePrefix</key>
+		<string>chipmunk</string>
+		<key>delay</key>
+		<real>0.08</real>
+		<key>animationFrames</key>
+		<string>6,7,8</string>
+	</dict>
+	<key>holding</key>
+	<dict>
+		<key>filenamePrefix</key>
+		<string>chipmunk</string>
+		<key>delay</key>
+		<real>0.08</real>
+		<key>animationFrames</key>
+		<string>9,10,11,12,13</string>
+	</dict>
+	<key>jumping</key>
+	<dict>
+		<key>filenamePrefix</key>
+		<string>chipmunk</string>
+		<key>delay</key>
+		<real>0.01</real>
+		<key>animationFrames</key>
+		<string>14,15</string>
+	</dict>
 </dict>
 </plist>

@@ -8,11 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "CCTouchDispatcher.h"
 #import "GameConstants.h"
-#import "TempObject.h"
-@interface Level1Layer : CCLayer <GameplayLayerDelegate>{
-    CCSprite *chipMunk;
+#import "Chipmunk.h"
+#import "Background.h"
+
+@interface Level1Layer : CCLayer <GameplayLayerDelegate,ChipmunkDelegate>{
+    Chipmunk *chipMunk;
+    Background *background;
     CCSpriteBatchNode *sceneSpriteBatchNode;
+    BOOL isTouching;
+    int jumpPower;
 }
+- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event;
+- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event;
 
 @end
