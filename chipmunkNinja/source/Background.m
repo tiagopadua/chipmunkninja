@@ -32,15 +32,21 @@ zIndex:(int)zIndex
         self.anchorPoint = ccp(0,0);
         self.position = ccp(0, 0);
 
-        [self createSpriteByName:@"background.png" flipX:FALSE ratio:ccp(1.0f,0.5f) position:CGPointZero zIndex:10];
-        [self createSpriteByName:@"background.png" flipX:FALSE ratio:ccp(1.0f,0.5f) position:ccp(0,screenSize.height-1) zIndex:10];
-        [self createSpriteByName:@"background.png" flipX:FALSE ratio:ccp(1.0f,0.5f) position:ccp(0,(screenSize.height*2)-2) zIndex:10];
-        [self createSpriteByName:@"tree-right.png" flipX:TRUE ratio:ccp(1.0f,1.0f) position:CGPointZero zIndex:10];
-        [self createSpriteByName:@"tree-right.png" flipX:TRUE ratio:ccp(1.0f,1.0f) position:ccp(0,(screenSize.height-1)) zIndex:10];
-        [self createSpriteByName:@"tree-right.png" flipX:TRUE ratio:ccp(1.0f,1.0f) position:ccp(0,(screenSize.height*2)-2) zIndex:10];
-        [self createSpriteByName:@"tree-right.png" flipX:FALSE ratio:ccp(1.0f,1.0f) position:ccp(screenSize.width-33,0) zIndex:10];
-        [self createSpriteByName:@"tree-right.png" flipX:FALSE ratio:ccp(1.0f,1.0f) position:ccp(screenSize.width-33,(screenSize.height-1)) zIndex:10];
-        [self createSpriteByName:@"tree-right.png" flipX:FALSE ratio:ccp(1.0f,1.0f) position:ccp(screenSize.width-33,(screenSize.height*2)-2) zIndex:10];
+        
+        double posXTreeRigth = screenSize.width-33;
+        double posY1Element = screenSize.height-1;
+        double posY2Element = (screenSize.height*2)-2;
+        double posY3Element = (screenSize.height*3)-3;
+        [self createSpriteByName:@"base_sprite.png" flipX:FALSE ratio:ccp(1.0f,0.5f) position:CGPointZero zIndex:9];        
+        [self createSpriteByName:@"background.png" flipX:FALSE ratio:ccp(1.0f,0.5f) position:ccp(0,posY1Element) zIndex:10];
+        [self createSpriteByName:@"background.png" flipX:FALSE ratio:ccp(1.0f,0.5f) position:ccp(0,posY2Element) zIndex:11];
+        [self createSpriteByName:@"background.png" flipX:FALSE ratio:ccp(1.0f,0.5f) position:ccp(0,posY3Element) zIndex:12];
+        [self createSpriteByName:@"tree-right.png" flipX:TRUE ratio:ccp(1.0f,1.0f) position:ccp(0,posY1Element) zIndex:13];
+        [self createSpriteByName:@"tree-right.png" flipX:TRUE ratio:ccp(1.0f,1.0f) position:ccp(0,posY2Element) zIndex:14];
+        [self createSpriteByName:@"tree-right.png" flipX:TRUE ratio:ccp(1.0f,1.0f) position:ccp(0,posY3Element) zIndex:15];
+        [self createSpriteByName:@"tree-right.png" flipX:FALSE ratio:ccp(1.0f,1.0f) position:ccp(posXTreeRigth,posY1Element) zIndex:16];
+        [self createSpriteByName:@"tree-right.png" flipX:FALSE ratio:ccp(1.0f,1.0f) position:ccp(posXTreeRigth,posY2Element) zIndex:17];
+        [self createSpriteByName:@"tree-right.png" flipX:FALSE ratio:ccp(1.0f,1.0f) position:ccp(posXTreeRigth,posY3Element) zIndex:18];
 
         
     }
@@ -51,10 +57,11 @@ zIndex:(int)zIndex
 }
 
 -(void) updateStateWithDeltaTime:(ccTime)deltaTime {
-    double deltaY = self.position.y+screenSize.height*2;
+    double deltaY = self.position.y+screenSize.height*3;
     self.position = ccp(self.position.x, self.position.y - deltaTime);
     if (deltaY < 0) {
-        self.position = ccp(self.position.x, deltaY);
+        CCLOG(@"%f - %f", self.position.y, deltaY);
+        self.position = ccp(self.position.x, deltaY-screenSize.height);
     }
 
 }

@@ -12,14 +12,21 @@
 #import "GameConstants.h"
 #import "Chipmunk.h"
 #import "Background.h"
-
+#import "Thorn.h"
 @interface Level1Layer : CCLayer <GameplayLayerDelegate,ChipmunkDelegate>{
     Chipmunk *chipMunk;
     Background *background;
     CCSpriteBatchNode *sceneSpriteBatchNode;
+    CGSize screenSize;
+    CCArray *thorns;
+    CCLabelTTF *scoreLabel;
+    double lastThornScore;
+    BOOL lastThornSide;
     BOOL isTouching;
     int jumpPower;
 }
+
+
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event;
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event;
 

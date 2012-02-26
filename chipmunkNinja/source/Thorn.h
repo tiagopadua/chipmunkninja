@@ -7,17 +7,12 @@
 //
 
 #import "cocos2d.h"
-
-@interface Thorn : CCSprite {
+#import "BaseObject.h"
+@interface Thorn : BaseObject {
+    
 @private
     BOOL _positionedRight;
 }
-
-- (Thorn*) init:(NSString *)imageFile withWindowSize:(CGSize)windowSize andTreeWidth:(double)treeWidth;
-- (Thorn*) init:(NSString *)imageFile withWindowSize:(CGSize)windowSize andTreeWidth:(double)treeWidth andPositionRight:(BOOL)flipRight;
-- (void) dealloc;
-
--(void) nextFrame:(double)dy;
-- (BOOL) isPositionedRight;
+-(void)setSide:(BOOL)flipRight;
 
 @end
