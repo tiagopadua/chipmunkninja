@@ -34,8 +34,8 @@
 						];
 	
 	[director setOpenGLView:glView];
-	if( ! [director enableRetinaDisplay:YES] )
-		CCLOG(@"Retina Display Not supported");
+	//if( ! [director enableRetinaDisplay:YES] )
+	//	CCLOG(@"Retina Display Not supported");
 	
 	[director setDeviceOrientation:kCCDeviceOrientationPortrait];
 	

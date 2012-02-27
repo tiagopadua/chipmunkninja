@@ -75,7 +75,7 @@
     self = [super init];
     if(self != nil){
         gameObjectType = kThorn;
-        characterState = kStateIdle;        
+        characterState = kStateIdle;
     }
     return self;
 }

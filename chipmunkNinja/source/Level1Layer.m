@@ -38,6 +38,7 @@
     [chipMunk setVelY:600];            
     [chipMunk changeState:chipmunkState];    
 }
+
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
     switch (chipMunk.characterState) {
         case kStateIdle:
@@ -49,13 +50,18 @@
         default:
             break;
     }
+
     return TRUE;
 }
 
 -(void) createChipmunk {
     chipMunk = [[Chipmunk alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] 
                                                       spriteFrameByName:@"chipmunk1.png"]];
+    
     chipMunk.delegate = self;
+    [chipMunk setScale:0.7f];
+
+
     [chipMunk setPosition:ccp(screenSize.width/2, 
                               (chipMunk.contentSize.height/2)-3)]; 
     
@@ -64,8 +70,10 @@
     [chipMunk changeState:kStateBreathing];
     
 }
+
 -(void) createBackground{
     background = [[Background node] init:screenSize];
+
     [self addChild:background z:0];
     
 }
@@ -105,7 +113,6 @@
     bool died = false;
     
     if (chipMunk.position.y < 10 && chipMunk.score > 5) died = true;
-    
     CCSprite *currentThorn;
     CCARRAY_FOREACH(thorns, currentThorn) {
         CGRect thornRect = currentThorn.boundingBox;
@@ -121,7 +128,6 @@
 
 
 -(void) createGameObjects{
-    
     [self createBackground];
     [self createChipmunk];
     
@@ -157,7 +163,7 @@
         scoreLabel.position = ccp(screenSize.width/2, screenSize.height - scoreLabel.contentSize.height/2 - 10);
         [scoreLabel setString:@"000"];
         [self addChild:scoreLabel z:300];
-        
+
         
     }
     return self; 

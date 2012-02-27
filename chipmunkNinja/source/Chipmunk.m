@@ -99,7 +99,7 @@
 }
 
 -(void) animateWhenJump:(ccTime)deltaTime {
-    double widthTree = 22+(self.contentSize.width/2);
+    double widthTree = 13+(self.contentSize.width/2);
     double deltaX = 500*deltaTime;
     
     if (touching) deltaX *= 1.5;
@@ -186,6 +186,7 @@
         [self initAnimations];
         gameObjectType = kChipmunk;
         characterState = kStateIdle;
+ 
     }
     return self;
 }

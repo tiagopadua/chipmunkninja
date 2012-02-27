@@ -48,7 +48,7 @@ zIndex:(int)zIndex
         [self createSpriteByName:@"tree-right.png" flipX:FALSE ratio:ccp(1.0f,1.0f) position:ccp(posXTreeRigth,posY2Element) zIndex:17];
         [self createSpriteByName:@"tree-right.png" flipX:FALSE ratio:ccp(1.0f,1.0f) position:ccp(posXTreeRigth,posY3Element) zIndex:18];
 
-        
+
     }
     return self;
 }

@@ -51,12 +51,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "chipmunkNinja/source/Level1Layer.m"
-         timestampString = "351137586.80181"
+         timestampString = "351947532.214024"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "46"
-         endingLineNumber = "46"
-         landmarkName = "-init"
+         startingLineNumber = "1"
+         endingLineNumber = "1"
+         landmarkName = "-ccTouchBegan:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -65,12 +65,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "chipmunkNinja/source/Level1Layer.m"
-         timestampString = "351137666.580274"
+         timestampString = "351947532.214024"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "44"
-         endingLineNumber = "44"
-         landmarkName = "-init"
+         startingLineNumber = "1"
+         endingLineNumber = "1"
+         landmarkName = "-ccTouchBegan:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -79,12 +79,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "chipmunkNinja/source/Level1Layer.m"
-         timestampString = "351138736.789238"
+         timestampString = "351947532.214024"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "43"
-         endingLineNumber = "43"
-         landmarkName = "-init"
+         startingLineNumber = "1"
+         endingLineNumber = "1"
+         landmarkName = "-ccTouchBegan:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
