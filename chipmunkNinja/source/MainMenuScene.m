@@ -10,5 +10,12 @@
 
 
 @implementation MainMenuScene
-
+-(id) init {
+    self = [super init];
+    if( self != nil){
+        menuLayer = [MainMenuLayer node];
+        [self addChild:menuLayer];
+    }
+    return self;
+}
 @end

@@ -13,6 +13,7 @@
 
 -(void) update:(ccTime)deltaTime {
     CCArray *listOfGameObjects = [sceneSpriteBatchNode children];
+    CCLOG(@"UPDATE >>> ");
     for (BaseObject *tempChar in listOfGameObjects) {
         [tempChar updateStateWithDeltaTime:deltaTime andListOfGameObjects:listOfGameObjects];
     }    
@@ -22,10 +23,6 @@
                atLocation:(CGPoint)spawnLocation 
                withZValue:(int)ZValue {
     
-}
-
-- (void) dealloc {
-    [super dealloc];
 }
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
@@ -40,6 +37,7 @@
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
+    CCLOG(@"ccTouchBegan" );
     switch (chipMunk.characterState) {
         case kStateIdle:
         case kStateBreathing:
@@ -68,21 +66,22 @@
     
     [sceneSpriteBatchNode addChild:chipMunk];
     [chipMunk changeState:kStateBreathing];
-    
+    CCLOG(@"CHIPMUNK");
 }
 
 -(void) createBackground{
     background = [[Background node] init:screenSize];
-
+    CCLOG(@"CREATE BACKGROUND");
     [self addChild:background z:0];
     
 }
 
 -(void) loadPlistLevel {
-    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+    
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"level1.plist"];
     sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"level1.png"];    
     [self addChild:sceneSpriteBatchNode z:1];
+    CCLOG(@"LOAD PLIST LEVEL");
     
 }
 
@@ -147,26 +146,57 @@
 #define INITIAL_THORN_COUNT 5
 #define LEFT TRUE
 #define RIGHT FALSE
+
+-(void) initialize {
+    lastThornScore = 0.0f;
+    lastThornSide = RIGHT;
+    screenSize = [CCDirector sharedDirector].winSize;
+    thorns = [[CCArray alloc] initWithCapacity:INITIAL_THORN_COUNT];
+    CCLOG(@"ENG INIT");
+    [self loadPlistLevel];
+    [self createGameObjects];
+    [self schedule:@selector(update:)];
+    scoreLabel = [CCLabelTTF labelWithString:@"000m" fontName:@"Marker Felt"fontSize:15];
+    scoreLabel.position = ccp(screenSize.width/2, screenSize.height - scoreLabel.contentSize.height/2 - 10);
+    [scoreLabel setString:@"000"];
+    [self addChild:scoreLabel z:300];
+    [self createRestartButton];    
+}
+-(void) restartLayer {
+    [self removeAllChildrenWithCleanup:TRUE];
+    [thorns release];
+    
+}
+-(void) onClickRestart {
+    [self restartLayer];
+    [self initialize];
+}
+
 -(id)init {
     self = [super init];
     if (self != nil) {
         
         self.isTouchEnabled = YES;
-        lastThornScore = 0.0f;
-        lastThornSide = RIGHT;
-        screenSize = [CCDirector sharedDirector].winSize;
-        thorns = [[CCArray alloc] initWithCapacity:INITIAL_THORN_COUNT];
-        [self loadPlistLevel];
-        [self createGameObjects];
-        [self scheduleUpdate];
-        scoreLabel = [CCLabelTTF labelWithString:@"000m" fontName:@"Marker Felt"fontSize:15];
-        scoreLabel.position = ccp(screenSize.width/2, screenSize.height - scoreLabel.contentSize.height/2 - 10);
-        [scoreLabel setString:@"000"];
-        [self addChild:scoreLabel z:300];
-
+        [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+        [self initialize];
+        CCLOG(@"ENG INIT");
         
     }
     return self; 
 }
+-(void) createRestartButton {
+    CCSprite *restartSprite = [CCSprite spriteWithSpriteFrame:
+                               [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"btn-restart-level.png"]];
+    CCMenuItemSprite *restartButton = [CCMenuItemSprite itemFromNormalSprite:restartSprite selectedSprite:nil
+                                                                      target:self selector:@selector(onClickRestart)];
+    menu = [CCMenu menuWithItems:restartButton, nil];
+    menu.anchorPoint = ccp(0,0);
+    menu.position = ccp(screenSize.width - (restartSprite.contentSize.width + 30),screenSize.height - 30);
+    [self addChild:menu];
+}
 
+- (void) dealloc {
+    [self restartLayer];
+    [super dealloc];
+}
 @end

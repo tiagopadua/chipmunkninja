@@ -18,6 +18,7 @@
     Background *background;
     CCSpriteBatchNode *sceneSpriteBatchNode;
     CGSize screenSize;
+    CCMenu *menu;
     CCArray *thorns;
     CCLabelTTF *scoreLabel;
     double lastThornScore;

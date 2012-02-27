@@ -45,7 +45,7 @@
 	[window addSubview: viewController.view];
 	[window makeKeyAndVisible];	
 	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
-	[[GameManager sharedGameManager] runSceneWithID: kGameLevel1];
+	[[GameManager sharedGameManager] runSceneWithID: kMainMenuScene];
 }
 
 

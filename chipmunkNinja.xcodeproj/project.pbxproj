@@ -21,6 +21,8 @@
 		974C0E3D14EDD68E00EFCE9C /* configLevel1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 974C0E3B14EDD68E00EFCE9C /* configLevel1.plist */; };
 		974C0E4114EDD7B000EFCE9C /* BaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 974C0E4014EDD7B000EFCE9C /* BaseObject.m */; };
 		974C0E4314EDDC4600EFCE9C /* chipmunk.plist in Resources */ = {isa = PBXBuildFile; fileRef = 974C0E4214EDDC4600EFCE9C /* chipmunk.plist */; };
+		97A28EC614FC078D003C60DA /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 97A28EC514FC078D003C60DA /* menu.png */; };
+		97A28EC814FC0796003C60DA /* menu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97A28EC714FC0796003C60DA /* menu.plist */; };
 		E3B75DA914D8AA6400222EBB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B75DA814D8AA6400222EBB /* QuartzCore.framework */; };
 		E3B75DAB14D8AA6400222EBB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B75DAA14D8AA6400222EBB /* OpenGLES.framework */; };
 		E3B75DAD14D8AA6400222EBB /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3B75DAC14D8AA6400222EBB /* OpenAL.framework */; };
@@ -173,6 +175,8 @@
 		974C0E3F14EDD7B000EFCE9C /* BaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseObject.h; sourceTree = "<group>"; };
 		974C0E4014EDD7B000EFCE9C /* BaseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseObject.m; sourceTree = "<group>"; };
 		974C0E4214EDDC4600EFCE9C /* chipmunk.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = chipmunk.plist; sourceTree = "<group>"; };
+		97A28EC514FC078D003C60DA /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		97A28EC714FC0796003C60DA /* menu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = menu.plist; sourceTree = "<group>"; };
 		E3B75DA414D8AA6400222EBB /* chipmunkNinja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chipmunkNinja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3B75DA814D8AA6400222EBB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E3B75DAA14D8AA6400222EBB /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -464,6 +468,7 @@
 		974C0E3A14EDD68E00EFCE9C /* plist */ = {
 			isa = PBXGroup;
 			children = (
+				97A28EC714FC0796003C60DA /* menu.plist */,
 				974C0E3B14EDD68E00EFCE9C /* configLevel1.plist */,
 				E3BCA34414EDC8EE007D136E /* level1.plist */,
 				974C0E4214EDDC4600EFCE9C /* chipmunk.plist */,
@@ -848,6 +853,7 @@
 		E3BCA34314EDC8EE007D136E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				97A28EC514FC078D003C60DA /* menu.png */,
 				E3BCA34514EDC8EE007D136E /* level1.png */,
 			);
 			name = Images;
@@ -987,6 +993,8 @@
 				E3BCA34714EDC8EE007D136E /* level1.png in Resources */,
 				974C0E3D14EDD68E00EFCE9C /* configLevel1.plist in Resources */,
 				974C0E4314EDDC4600EFCE9C /* chipmunk.plist in Resources */,
+				97A28EC614FC078D003C60DA /* menu.png in Resources */,
+				97A28EC814FC0796003C60DA /* menu.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

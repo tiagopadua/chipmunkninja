@@ -19,4 +19,7 @@
     }
     return self;
 }
+- (void)resetLevel {
+
+}
 @end

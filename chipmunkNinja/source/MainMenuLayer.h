@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-
+#import "GameManager.h"
 @interface MainMenuLayer : CCLayer {
-    
+    CCSpriteBatchNode *sceneSpriteBatchNode;
+    CCParallaxNode *background;
+    CCMenu *mainMenu;
+    CGSize screenSize;
 }
 
 @end
