@@ -97,7 +97,15 @@
         [delegate onUpdateBackground:dy];
     }
 }
-
+-(CGRect)getRealBoundingBox{
+    CGSize contentSize = [self contentSize];
+    CGPoint contentPosition = [self position];
+    CGRect result = CGRectMake(contentPosition.x, contentPosition.y, 
+                (contentSize.width) * ABS(self.scaleX), (contentSize.height) * ABS(self.scaleY));
+    //CGRectOffset(, contentPosition.x-contentSize.width/2, contentPosition.y-contentSize.height/2);
+    
+    return   result;
+}
 -(void) animateWhenJump:(ccTime)deltaTime {
     double widthTree = 13+(self.contentSize.width/2);
     double deltaX = 500*deltaTime;
@@ -106,14 +114,14 @@
     
     if(side == LEFT){
         self.position = ccp(self.position.x + deltaX, self.position.y + velY*deltaTime);
-        self.flipX = FALSE;
+        self.scaleX = self.scaleX>0 ? self.scaleX : -self.scaleX;
         if (self.position.x >= (screenSize.width - widthTree)) {
             self.position = ccp(screenSize.width - widthTree, self.position.y);
             [self changeState:kStateHolding];
             side = RIGHT;
         }
     } else {
-        self.flipX = TRUE;
+        self.scaleX = self.scaleX<0 ? self.scaleX : -self.scaleX;
         self.position = ccp(self.position.x - deltaX, self.position.y + velY*deltaTime);
         if (self.position.x <= widthTree) {
             self.position = ccp(widthTree, self.position.y);
@@ -186,6 +194,9 @@
         [self initAnimations];
         gameObjectType = kChipmunk;
         characterState = kStateIdle;
+        self.scale = 0.7f;
+        self.scaleX = 0.7f;
+        self.scaleY = 0.7f;
  
     }
     return self;

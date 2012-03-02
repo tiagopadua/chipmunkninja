@@ -1,4 +1,4 @@
-//
+    //
 //  Level1Layer.m
 //  chipmunkNinja
 //
@@ -11,13 +11,7 @@
 @implementation Level1Layer
 
 
--(void) update:(ccTime)deltaTime {
-    CCArray *listOfGameObjects = [sceneSpriteBatchNode children];
-    CCLOG(@"UPDATE >>> ");
-    for (BaseObject *tempChar in listOfGameObjects) {
-        [tempChar updateStateWithDeltaTime:deltaTime andListOfGameObjects:listOfGameObjects];
-    }    
-}
+
 
 -(void)createObjectOfType:(GameObjectType)objectType 
                atLocation:(CGPoint)spawnLocation 
@@ -26,9 +20,7 @@
 }
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
-    CCLOG(@"TOUCH END");
     [chipMunk setTouching:FALSE];
-    
 }
 -(void) setChipmunkJump:(CharacterStates)chipmunkState{
     [chipMunk setTouching:TRUE];
@@ -37,7 +29,6 @@
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
-    CCLOG(@"ccTouchBegan" );
     switch (chipMunk.characterState) {
         case kStateIdle:
         case kStateBreathing:
@@ -57,21 +48,23 @@
                                                       spriteFrameByName:@"chipmunk1.png"]];
     
     chipMunk.delegate = self;
-    [chipMunk setScale:0.7f];
+
 
 
     [chipMunk setPosition:ccp(screenSize.width/2, 
-                              (chipMunk.contentSize.height/2)-3)]; 
+                              chipMunk.contentSize.height/2)]; 
     
     
     [sceneSpriteBatchNode addChild:chipMunk];
     [chipMunk changeState:kStateBreathing];
-    CCLOG(@"CHIPMUNK");
 }
-
+-(void) onDestroyThorn:(id)thorn{
+    CCLOG(@"QUANTIDADE NA LISTA >>>> %d", [thorns count]);
+    [self removeChild:thorn cleanup:TRUE];
+    [thorns removeObject:thorn];
+}
 -(void) createBackground{
     background = [[Background node] init:screenSize];
-    CCLOG(@"CREATE BACKGROUND");
     [self addChild:background z:0];
     
 }
@@ -81,7 +74,6 @@
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"level1.plist"];
     sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"level1.png"];    
     [self addChild:sceneSpriteBatchNode z:1];
-    CCLOG(@"LOAD PLIST LEVEL");
     
 }
 
@@ -89,39 +81,56 @@
     Thorn *currentThorn = [[Thorn alloc] init];
     [currentThorn setSide:isRight];
     [thorns addObject:currentThorn];
+    currentThorn.delegate = self;
+
     return currentThorn;
 }
 
 -(void) checkAddThorn {
-    Thorn *currentThorn;
-    CCARRAY_FOREACH(thorns, currentThorn) {
-        if (currentThorn.position.y <= 0) {
-            currentThorn.position = ccp(currentThorn.position.x, screenSize.height + currentThorn.contentSize.height/2);
-            [self removeChild:currentThorn cleanup:TRUE];
-            [thorns removeObject:currentThorn];
-        }
-    }
     if ( (chipMunk.score - lastThornScore) > 120) {
-        [self addChild:[self newThorn:lastThornSide]];
+        [self addChild:[self newThorn:lastThornSide]];        
         lastThornSide = !lastThornSide;
         lastThornScore = chipMunk.score;
     }
 }
-
-- (void) checkDeath{
-    bool died = false;
+-(void)onDie  {
+    [scoreLabel setString:@"MORREU MALUCO!"];
+    paraTudo = TRUE;
+}
+- (BOOL) rect:(CGRect) rect collisionWithRect:(CGRect) rectTwo
+{
+    float rect_x1 = rect.origin.x;
+    float rect_x2 = rect_x1+rect.size.width;
     
-    if (chipMunk.position.y < 10 && chipMunk.score > 5) died = true;
-    CCSprite *currentThorn;
+    float rect_y1 = rect.origin.y;
+    float rect_y2 = rect_y1+rect.size.height;
+    
+    float rect2_x1 = rectTwo.origin.x;
+    float rect2_x2 = rect2_x1+rectTwo.size.width;
+    
+    float rect2_y1 = rectTwo.origin.y;
+    float rect2_y2 = rect2_y1+rectTwo.size.height;
+    CCLOG(@"R1[X1]=%f R1[X2]=%f R1[Y1]=%f R1[Y2]=%f", rect_x1,rect_x2,rect_y1,rect_y2);
+    CCLOG(@"R1[X1]=%f R1[X2]=%f R1[Y1]=%f R1[Y2]=%f", rect2_x1,rect2_x2,rect2_y1,rect2_y2);
+    if((rect_x2 > rect2_x1 && rect_x1 < rect2_x2) &&(rect_y2 > rect2_y1 && rect_y1 < rect2_y2))
+        return YES;
+    
+    return NO;
+}
+- (void) checkDeath{
+    Thorn *currentThorn;
     CCARRAY_FOREACH(thorns, currentThorn) {
-        CGRect thornRect = currentThorn.boundingBox;
-        thornRect.origin.x += (thornRect.size.width *= 0.5) / 2;
-        thornRect.origin.y += (thornRect.size.height *= 0.5) / 2;
-        CGRect chipmunkRect = chipMunk.boundingBox;
-        chipmunkRect.origin.x += (chipmunkRect.size.width *= 0.7) / 2;
-        if (CGRectIntersectsRect(chipmunkRect, thornRect)) died = true;
+        CGRect cMArea = [chipMunk getRealBoundingBox];
+        CGRect cThorn = [currentThorn getRealBoundingBox];
+
+
+        if ([self rect:cMArea collisionWithRect:cThorn] == YES) {
+            CCLOG(@"cM x %f y: %f w:%f h:%f", chipMunk.position.x, chipMunk.position.y, chipMunk.contentSize.width, chipMunk.contentSize.height);
+            CCLOG(@"thorn x %f y: %f w:%f h:%f", currentThorn.position.x, currentThorn.position.y, currentThorn.contentSize.width, currentThorn.contentSize.height);
+            [self onDie];
+            break;
+        }
     }
-    if (died) [scoreLabel setString:@"MORREU MALUCO!"];
 }
 
 
@@ -138,18 +147,35 @@
     [scoreLabel setString: [NSString stringWithFormat:@"%03.0fm", chipMunk.score/50] ];
     Thorn *currentThorn;
     CCARRAY_FOREACH(thorns, currentThorn) {
-        [currentThorn setPosition:ccp(currentThorn.position.x, currentThorn.position.y - deltaY)];
+        [currentThorn updatePosition:deltaY];
     }
     [self checkAddThorn];
-    [self checkDeath];
+
 }
 #define INITIAL_THORN_COUNT 5
 #define LEFT TRUE
 #define RIGHT FALSE
 
+-(void) createRestartButton {
+    CCSprite *restartSprite = [CCSprite spriteWithSpriteFrame:
+                               [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"btn-restart-level.png"]];
+    CCMenuItemSprite *restartButton = [CCMenuItemSprite itemFromNormalSprite:restartSprite selectedSprite:nil
+                                                                      target:self selector:@selector(onClickRestart)];
+    menu = [CCMenu menuWithItems:restartButton, nil];
+    menu.anchorPoint = ccp(0,0);
+    menu.position = ccp(screenSize.width - (restartSprite.contentSize.width + 30),screenSize.height - 30);
+    [self addChild:menu];
+}
+-(void) restartLayer {
+    [self removeAllChildrenWithCleanup:TRUE];
+    [thorns release];
+    
+}
+
 -(void) initialize {
     lastThornScore = 0.0f;
     lastThornSide = RIGHT;
+    paraTudo = FALSE;
     screenSize = [CCDirector sharedDirector].winSize;
     thorns = [[CCArray alloc] initWithCapacity:INITIAL_THORN_COUNT];
     CCLOG(@"ENG INIT");
@@ -162,20 +188,17 @@
     [self addChild:scoreLabel z:300];
     [self createRestartButton];    
 }
--(void) restartLayer {
-    [self removeAllChildrenWithCleanup:TRUE];
-    [thorns release];
-    
-}
+
 -(void) onClickRestart {
     [self restartLayer];
     [self initialize];
 }
 
+
 -(id)init {
     self = [super init];
     if (self != nil) {
-        
+        paraTudo = FALSE;     
         self.isTouchEnabled = YES;
         [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
         [self initialize];
@@ -184,17 +207,14 @@
     }
     return self; 
 }
--(void) createRestartButton {
-    CCSprite *restartSprite = [CCSprite spriteWithSpriteFrame:
-                               [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"btn-restart-level.png"]];
-    CCMenuItemSprite *restartButton = [CCMenuItemSprite itemFromNormalSprite:restartSprite selectedSprite:nil
-                                                                      target:self selector:@selector(onClickRestart)];
-    menu = [CCMenu menuWithItems:restartButton, nil];
-    menu.anchorPoint = ccp(0,0);
-    menu.position = ccp(screenSize.width - (restartSprite.contentSize.width + 30),screenSize.height - 30);
-    [self addChild:menu];
+-(void) update:(ccTime)deltaTime {
+    if(paraTudo)return;
+    CCArray *listOfGameObjects = [sceneSpriteBatchNode children];
+    for (BaseObject *tempChar in listOfGameObjects) {
+        [tempChar updateStateWithDeltaTime:deltaTime andListOfGameObjects:listOfGameObjects];
+    }
+    [self checkDeath];
 }
-
 - (void) dealloc {
     [self restartLayer];
     [super dealloc];

@@ -21,6 +21,7 @@
     BOOL side;
     BOOL touching;
     double score;
+
     id <ChipmunkDelegate> delegate;
     //    CCAnimation *damageAnimation;    
     //    CCAnimation *deadAnimation;    

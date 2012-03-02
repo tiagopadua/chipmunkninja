@@ -9,7 +9,7 @@
 #import "Thorn.h"
 
 @implementation Thorn
-
+@synthesize delegate;
 /*- (Thorn*) init:(NSString *)imageFile withWindowSize:(CGSize)windowSize andTreeWidth:(double)treeWidth {
     return [self init:imageFile withWindowSize:windowSize andTreeWidth:treeWidth andPositionRight:FALSE];
 }
@@ -45,15 +45,24 @@
                                                                    sharedSpriteFrameCache]
                                                                   spriteFrameByName:@"thorn-right.png"]];
         sprite.anchorPoint = ccp(0.0f, 0.0f);
-        sprite.position = ccp(0,22*i);
-        sprite.flipX = flipX;
+        sprite.position = ccp(flipX ? 40 : 12, 24*i);
+        sprite.scaleX = flipX ? -1.0 : 1.0;
+        
         [self addChild:sprite];
 
     }
-    
+    [self setContentSize:CGSizeMake(32, 24*times)];
 }
 -(void)changeState:(CharacterStates)newState {
     
+}
+
+-(void) updatePosition:(double)deltaY {
+    self.position = ccp(self.position.x, self.position.y - deltaY);
+    if(self.position.y < 0 ){
+        [delegate onDestroyThorn:self];
+        //[self removeFromParentAndCleanup:TRUE];
+    }
 }
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects {
 }
@@ -62,9 +71,9 @@
 }
 
 -(void) setSide:(BOOL)flipRight{
-    [self createWithNumElements: rand() % 5  andFlipX:flipRight];
+    [self createWithNumElements: MAX(2, rand() % 5)  andFlipX:flipRight];
     if (flipRight) {
-        self.position = ccp(24, screenSize.height + self.contentSize.height/2);
+        self.position = ccp(40, screenSize.height + self.contentSize.height/2);
     } else {
         self.position = ccp(screenSize.width-55, screenSize.height + self.contentSize.height/2);
     }

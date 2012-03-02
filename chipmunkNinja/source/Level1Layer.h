@@ -13,7 +13,7 @@
 #import "Chipmunk.h"
 #import "Background.h"
 #import "Thorn.h"
-@interface Level1Layer : CCLayer <GameplayLayerDelegate,ChipmunkDelegate>{
+@interface Level1Layer : CCLayer <GameplayLayerDelegate,ChipmunkDelegate,ThornDelegate>{
     Chipmunk *chipMunk;
     Background *background;
     CCSpriteBatchNode *sceneSpriteBatchNode;
@@ -23,6 +23,7 @@
     CCLabelTTF *scoreLabel;
     double lastThornScore;
     BOOL lastThornSide;
+    BOOL paraTudo;
     BOOL isTouching;
     int jumpPower;
 }

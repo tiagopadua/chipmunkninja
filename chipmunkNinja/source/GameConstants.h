@@ -27,6 +27,10 @@ typedef enum {
     kStar
 } GameObjectType;
 
+@protocol ThornDelegate
+-(void)onDestroyThorn:(id)thorn;
+@end
+
 @protocol ChipmunkDelegate
 -(void)onUpdateBackground:(double)deltaY;
 @end

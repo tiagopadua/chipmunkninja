@@ -23,7 +23,12 @@
     }
     return self;
 }
-
+-(CGRect)getRealBoundingBox{
+    CGSize contentSize = [self contentSize];
+    CGPoint contentPosition = [self position];
+    CGRect result = CGRectMake(contentPosition.x, contentPosition.y, contentSize.width, contentSize.height); 
+    return result;
+}
 -(void)changeState:(CharacterStates)newState {
     CCLOG(@"GameObject->changeState method should be overriden");
 }
