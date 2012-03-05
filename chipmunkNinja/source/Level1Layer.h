@@ -26,9 +26,10 @@
     BOOL paraTudo;
     BOOL isTouching;
     int jumpPower;
+    CCRenderTexture *_rt;
 }
 
-
+@property (nonatomic,assign) CCRenderTexture *_rt;
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event;
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event;
 
