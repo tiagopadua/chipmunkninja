@@ -13,22 +13,26 @@
 
 
 -(void) nextFrame:(double)deltaTime andIncrement:(double)multiply{
-    posY = self.position.y + (deltaTime * 50);
-    self.position = ccp(self.position.x, posY);
+    if(lastX){
+        if(self.position.x >= maxMoveX){
+            lastX = !lastX;
+        }
+    }else{
+        if(self.position.x <= minMoveX){
+            lastX = !lastX;
+        }
+    }
+    
+    
+    posY = MAX(self.position.y + (deltaTime * 50), -50);
+    self.position = ccp(self.position.x + (deltaTime * (lastX ? +200 : -200)), posY);
 }
 
 -(void)changeState:(CharacterStates)newState {
     id action = nil;
 }
 
--(void) endAnimation {
-    lastX = !lastX;
-    CCLOG(@"ENDANIMATIONNNN++++++++++++++++++");
-    id moveTo = [CCMoveTo actionWithDuration:0.5 position:ccp(self.position.x + (lastX ? +50 : -50), posY)];
-    id call = [CCCallFunc actionWithTarget:self selector:@selector(endAnimation)];     
-    [self runAction:[CCSequence actions:moveTo, call, nil]];
 
-}
 -(void) loadSprite {
     
     
@@ -42,17 +46,23 @@
     
     edge.anchorPoint = ccp(0.0f,0.0f);
     chain.anchorPoint = ccp(0.0f,0.0f);
-    chain.position = ccp(edge.contentSize.width,0);
+    chain.position = ccp(edge.contentSize.width-1,0);
+
     lastX = FALSE;
     posY = 0;
-    [self endAnimation];
+
     [self addChild:edge];
     [self addChild:chain];
+    [self setContentSize:CGSizeMake(chain.contentSize.width+edge.contentSize.width, 30)];
+    self.anchorPoint = ccp(0.0f, 0.0f);
+
 }
 
 -(id) init {
     self = [super init];
     velY = 0;
+    minMoveX = 0;
+    maxMoveX = 50;
     if(self != nil){
         [self loadSprite];
         gameObjectType = kChainsaw;

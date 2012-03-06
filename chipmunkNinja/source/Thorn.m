@@ -35,7 +35,7 @@
     self.position = ccp(self.position.x, self.position.y - deltaY);
     if(self.position.y < 0 ){
         [delegate onDestroyThorn:self];
-        //[self removeFromParentAndCleanup:TRUE];
+        [self removeFromParentAndCleanup:TRUE];
     }
 }
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects {

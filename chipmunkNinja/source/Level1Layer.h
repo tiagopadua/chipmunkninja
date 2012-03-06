@@ -29,6 +29,7 @@
     BOOL paraTudo;
     BOOL isTouching;
     int jumpPower;
+    BOOL died;
     CCRenderTexture *_rt;
 }
 

@@ -15,6 +15,8 @@
     CCSprite *chain;
     BOOL lastX;
     double posY;
+    double minMoveX;
+    double maxMoveX;
 }
 -(void) nextFrame:(double)deltaTime andIncrement:(double)multiply;
 

@@ -46,7 +46,7 @@
     if(chainsaw != nil) return;
     chainsaw = [Chainsaw node];
     chainsaw.position = ccp(screenSize.width,0);
-    [chainsaw runAction:[CCMoveTo actionWithDuration:0.4f position:ccp(-60,chainsaw.position.y)]];
+    [chainsaw runAction:[CCMoveTo actionWithDuration:0.4f position:ccp(-40,chainsaw.position.y)]];
     [self addChild:chainsaw];
 }
 
@@ -67,7 +67,6 @@
 }
 -(void) onDestroyThorn:(id)thorn{
     CCLOG(@"QUANTIDADE NA LISTA >>>> %d", [thorns count]);
-    [self removeChild:thorn cleanup:TRUE];
     [thorns removeObject:thorn];
 }
 -(void) createBackground{
@@ -99,7 +98,6 @@
 -(void) checkAddThorn {
     double topScore = (screenSize.height - chipMunk.position.y) + chipMunk.score;
     Thorn *nextThorn;
-    CCLOG(@"topScore:%f - nextThornPosition:%f", topScore,nextThornPosition);
     if( topScore >= nextThornPosition ){
         nextThorn = [self newThorn:lastThornSide];
         [self addChild:nextThorn];
@@ -118,6 +116,7 @@
     
 }
 -(void)onDie  {
+    died = TRUE;
     [scoreLabel setString:@"MORREU MALUCO!"];
     [self runAction:[CCSequence actions:
                         [CCDelayTime actionWithDuration:0.07f],
@@ -188,12 +187,18 @@
 
 - (void) checkDeath{
     Thorn *currentThorn;
+    
+    if(chainsaw != nil && [self isCollisionBetweenSpriteA:chipMunk spriteB:chainsaw pixelPerfect:TRUE]){
+        [self onDie];
+        return;
+    }
     CCARRAY_FOREACH(thorns, currentThorn) {
         if ([self isCollisionBetweenSpriteA:chipMunk spriteB:currentThorn pixelPerfect:TRUE] ) {
             [self onDie];
-            break;
+            return;
         }
     }
+
 }
 
 -(void) createGameObjects{
@@ -211,7 +216,7 @@
         [currentThorn updatePosition:deltaY];
     }
     if(chainsaw){
-        chainsaw.position = ccp(chainsaw.position.x, -50);
+        chainsaw.position = ccp(chainsaw.position.x, chainsaw.position.y - deltaY);
     }
     [self checkAddThorn];
     
@@ -234,13 +239,12 @@
 -(void) restartLayer {
     [self removeAllChildrenWithCleanup:TRUE];
     [thorns release];
-    
+    chainsaw = nil;
 }
 
 -(void) initialize {
     lastThornScore = 0.0f;
     lastThornSide = RIGHT;
-    paraTudo = FALSE;
     screenSize = [CCDirector sharedDirector].winSize;
     nextThornPosition = screenSize.height+MAX(40,1+(rand()%160));
     thorns = [[CCArray alloc] initWithCapacity:INITIAL_THORN_COUNT];
@@ -256,7 +260,7 @@
     _rt.position = ccp(screenSize.width*0.5f,screenSize.height*0.1f);
     [self addChild:_rt];
     _rt.visible = NO;
-
+    died = FALSE;
     [self createRestartButton];    
     [self schedule:@selector(update:)];
 }
@@ -272,7 +276,6 @@
     if (self != nil) {
         paraTudo = FALSE;     
         self.isTouchEnabled = YES;
-
         [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
         [self initialize];
         CCLOG(@"ENG INIT");
@@ -281,7 +284,10 @@
     return self; 
 }
 -(void) update:(ccTime)deltaTime {
-    [chipMunk updateStateWithDeltaTime:deltaTime andListOfGameObjects:NULL];
+    if(died) return;
+    if(chipMunk){
+        [chipMunk updateStateWithDeltaTime:deltaTime andListOfGameObjects:NULL];
+    }
     if(chainsaw != nil) {
      [chainsaw nextFrame:deltaTime andIncrement:50];   
     }
