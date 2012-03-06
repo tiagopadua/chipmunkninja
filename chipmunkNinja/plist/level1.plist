@@ -7,7 +7,7 @@
             <key>background.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{132,230},{320,480}}</string>
+                <string>{{2,1194},{320,480}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -43,10 +43,36 @@
                 <key>sourceSize</key>
                 <string>{44,47}</string>
             </dict>
+            <key>chainsaw-edge.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{82,2},{50,55}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,55}}</string>
+                <key>sourceSize</key>
+                <string>{50,55}</string>
+            </dict>
+            <key>chainsaw.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{132,230},{320,57}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{320,57}}</string>
+                <key>sourceSize</key>
+                <string>{320,57}</string>
+            </dict>
             <key>chipmunk1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{177,2},{92,74}}</string>
+                <string>{{323,2},{92,74}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +85,7 @@
             <key>chipmunk10.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{97,154},{93,74}}</string>
+                <string>{{192,154},{93,74}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +98,7 @@
             <key>chipmunk11.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{383,154},{94,74}}</string>
+                <string>{{287,154},{94,74}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +111,7 @@
             <key>chipmunk12.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{82,2},{93,72}}</string>
+                <string>{{134,2},{93,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +124,7 @@
             <key>chipmunk13.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,78},{92,74}}</string>
+                <string>{{417,2},{92,74}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +137,7 @@
             <key>chipmunk14.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{287,154},{94,74}}</string>
+                <string>{{383,154},{94,74}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +163,7 @@
             <key>chipmunk2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{378,78},{92,74}}</string>
+                <string>{{96,78},{92,74}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +176,7 @@
             <key>chipmunk3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{96,78},{92,74}}</string>
+                <string>{{284,78},{92,74}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +189,7 @@
             <key>chipmunk4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{284,78},{92,74}}</string>
+                <string>{{378,78},{92,74}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +215,7 @@
             <key>chipmunk6.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{365,2},{92,74}}</string>
+                <string>{{229,2},{92,74}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +228,7 @@
             <key>chipmunk7.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{271,2},{92,74}}</string>
+                <string>{{2,78},{92,74}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +241,7 @@
             <key>chipmunk8.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{192,154},{93,74}}</string>
+                <string>{{2,154},{93,74}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -228,7 +254,7 @@
             <key>chipmunk9.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,154},{93,74}}</string>
+                <string>{{97,154},{93,74}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -272,9 +298,9 @@
             <key>realTextureFileName</key>
             <string>level1.png</string>
             <key>size</key>
-            <string>{479,1194}</string>
+            <string>{511,1676}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0904824b03d93b81554b371f466b19e6$</string>
+            <string>$TexturePacker:SmartUpdate:f068f9ac62fd421dbe069d55fe3c0419$</string>
             <key>textureFileName</key>
             <string>level1.png</string>
         </dict>
