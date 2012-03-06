@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		971EE79B1505BCC800B6DBF3 /* Chainsaw.m in Sources */ = {isa = PBXBuildFile; fileRef = 971EE79A1505BCC700B6DBF3 /* Chainsaw.m */; };
 		974C0E2414EDCCA500EFCE9C /* CreditsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 974C0E1214EDCCA500EFCE9C /* CreditsLayer.m */; };
 		974C0E2514EDCCA500EFCE9C /* CreditsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 974C0E1414EDCCA500EFCE9C /* CreditsScene.m */; };
 		974C0E2614EDCCA500EFCE9C /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 974C0E1714EDCCA500EFCE9C /* GameLayer.m */; };
@@ -148,6 +149,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		971EE7991505BCC700B6DBF3 /* Chainsaw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chainsaw.h; sourceTree = "<group>"; };
+		971EE79A1505BCC700B6DBF3 /* Chainsaw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chainsaw.m; sourceTree = "<group>"; };
 		974C0E1114EDCCA500EFCE9C /* CreditsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditsLayer.h; sourceTree = "<group>"; };
 		974C0E1214EDCCA500EFCE9C /* CreditsLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditsLayer.m; sourceTree = "<group>"; };
 		974C0E1314EDCCA500EFCE9C /* CreditsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditsScene.h; sourceTree = "<group>"; };
@@ -925,6 +928,8 @@
 				E3B8344114E826BD00266C93 /* Chipmunk.m */,
 				974C0E3F14EDD7B000EFCE9C /* BaseObject.h */,
 				974C0E4014EDD7B000EFCE9C /* BaseObject.m */,
+				971EE7991505BCC700B6DBF3 /* Chainsaw.h */,
+				971EE79A1505BCC700B6DBF3 /* Chainsaw.m */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
@@ -1120,6 +1125,7 @@
 				974C0E3914EDD02700EFCE9C /* Level1Scene.m in Sources */,
 				974C0E4114EDD7B000EFCE9C /* BaseObject.m in Sources */,
 				E3BC89A814EDF74F00AEBD2D /* Thorn.m in Sources */,
+				971EE79B1505BCC800B6DBF3 /* Chainsaw.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

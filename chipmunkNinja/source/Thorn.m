@@ -10,33 +10,7 @@
 
 @implementation Thorn
 @synthesize delegate;
-/*- (Thorn*) init:(NSString *)imageFile withWindowSize:(CGSize)windowSize andTreeWidth:(double)treeWidth {
-    return [self init:imageFile withWindowSize:windowSize andTreeWidth:treeWidth andPositionRight:FALSE];
-}
-- (Thorn*) init:(NSString *)imageFile withWindowSize:(CGSize)windowSize andTreeWidth:(double)treeWidth andPositionRight:(BOOL)flipRight {
-    self = [CCSprite spriteWithFile:imageFile];
-    if (self) {
-        if (flipRight) {
-            self.flipX = flipRight;
-            self.position = ccp(windowSize.width-treeWidth, windowSize.height + self.contentSize.height/2);
-        } else {
-            self.position = ccp(treeWidth, windowSize.height + self.contentSize.height/2);
-        }
-        _positionedRight = flipRight;
-    }
-    return self;
-}
--(void)dealloc {
-    [super dealloc];
-}
 
--(void) nextFrame:(double)dy {
-    self.position = ccp(self.position.x, self.position.y - dy);
-}
-
-- (BOOL) isPositionedRight {
-    return _positionedRight;
-}*/
 -(void)createWithNumElements:(int)times andFlipX:(BOOL)flipX
 {
 
@@ -45,7 +19,7 @@
                                                                    sharedSpriteFrameCache]
                                                                   spriteFrameByName:@"thorn-right.png"]];
         sprite.anchorPoint = ccp(0.0f, 0.0f);
-        sprite.position = ccp(flipX ? 40 : 12, 24*i);
+        sprite.position = ccp(flipX ? 30 : 16, 24*i);
         sprite.scaleX = flipX ? -1.0 : 1.0;
         
         [self addChild:sprite];

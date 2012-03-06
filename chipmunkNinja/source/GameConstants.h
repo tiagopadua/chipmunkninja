@@ -24,7 +24,8 @@ typedef enum {
     kTree,
     kThorn,
     kBackground,
-    kStar
+    kStar,
+    kChainsaw
 } GameObjectType;
 
 @protocol ThornDelegate
@@ -32,7 +33,7 @@ typedef enum {
 @end
 
 @protocol ChipmunkDelegate
--(void)onUpdateBackground:(double)deltaY;
+-(void)onUpdateBackground:(double)deltaY andDeltaTime:(double)deltaTime;
 @end
 
 @protocol GameplayLayerDelegate

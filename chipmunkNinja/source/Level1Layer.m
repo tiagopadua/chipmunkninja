@@ -42,6 +42,13 @@
 
     return TRUE;
 }
+-(void) createChainsaw {
+    if(chainsaw != nil) return;
+    chainsaw = [Chainsaw node];
+    chainsaw.position = ccp(screenSize.width,0);
+    [chainsaw runAction:[CCMoveTo actionWithDuration:0.4f position:ccp(-60,chainsaw.position.y)]];
+    [self addChild:chainsaw];
+}
 
 -(void) createChipmunk {
     chipMunk = [[Chipmunk alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] 
@@ -68,6 +75,10 @@
     [self addChild:background z:0];
     
 }
+-(BOOL) randomBOOL{
+    int tmp = (arc4random() % 30)+1;
+    return tmp < 25;
+}
 
 -(void) loadPlistLevel {
     
@@ -82,15 +93,23 @@
     [currentThorn setSide:isRight];
     [thorns addObject:currentThorn];
     currentThorn.delegate = self;
-
     return currentThorn;
 }
 
 -(void) checkAddThorn {
-    if ( (chipMunk.score - lastThornScore) > 120) {
-        [self addChild:[self newThorn:lastThornSide]];        
-        lastThornSide = !lastThornSide;
-        lastThornScore = chipMunk.score;
+    double topScore = (screenSize.height - chipMunk.position.y) + chipMunk.score;
+    Thorn *nextThorn;
+    CCLOG(@"topScore:%f - nextThornPosition:%f", topScore,nextThornPosition);
+    if( topScore >= nextThornPosition ){
+        nextThorn = [self newThorn:lastThornSide];
+        [self addChild:nextThorn];
+        BOOL changeSide = [self randomBOOL];
+        double minHeight = changeSide ? 40 : 140;
+        int maxHeight = changeSide ? 100 : 260;
+        nextThornPosition = topScore + MAX(minHeight+nextThorn.contentSize.height, 
+                                           nextThorn.contentSize.height+(rand()%maxHeight));
+        lastThornSide = changeSide ? !lastThornSide : lastThornSide;
+        [self createChainsaw];
     }
 }
 -(void) destroyBody {
@@ -170,13 +189,7 @@
 - (void) checkDeath{
     Thorn *currentThorn;
     CCARRAY_FOREACH(thorns, currentThorn) {
-        CGRect cMArea = [chipMunk getRealBoundingBox];
-        CGRect cThorn = [currentThorn getRealBoundingBox];
-        
-        
         if ([self isCollisionBetweenSpriteA:chipMunk spriteB:currentThorn pixelPerfect:TRUE] ) {
-            CCLOG(@"cM x %f y: %f w:%f h:%f", chipMunk.position.x, chipMunk.position.y, chipMunk.contentSize.width, chipMunk.contentSize.height);
-            CCLOG(@"thorn x %f y: %f w:%f h:%f", currentThorn.position.x, currentThorn.position.y, currentThorn.contentSize.width, currentThorn.contentSize.height);
             [self onDie];
             break;
         }
@@ -188,7 +201,7 @@
     [self createChipmunk];
     
 }
--(void)onUpdateBackground:(double)deltaY{
+-(void)onUpdateBackground:(double)deltaY andDeltaTime:(double)deltaTime{
     if (background) {
         [background updateStateWithDeltaTime:deltaY];
     }
@@ -197,7 +210,11 @@
     CCARRAY_FOREACH(thorns, currentThorn) {
         [currentThorn updatePosition:deltaY];
     }
+    if(chainsaw){
+        chainsaw.position = ccp(chainsaw.position.x, -50);
+    }
     [self checkAddThorn];
+    
 
 }
 #define INITIAL_THORN_COUNT 5
@@ -225,6 +242,7 @@
     lastThornSide = RIGHT;
     paraTudo = FALSE;
     screenSize = [CCDirector sharedDirector].winSize;
+    nextThornPosition = screenSize.height+MAX(40,1+(rand()%160));
     thorns = [[CCArray alloc] initWithCapacity:INITIAL_THORN_COUNT];
     CCLOG(@"ENG INIT");
     [self loadPlistLevel];
@@ -238,7 +256,7 @@
     _rt.position = ccp(screenSize.width*0.5f,screenSize.height*0.1f);
     [self addChild:_rt];
     _rt.visible = NO;
-    
+
     [self createRestartButton];    
     [self schedule:@selector(update:)];
 }
@@ -254,7 +272,7 @@
     if (self != nil) {
         paraTudo = FALSE;     
         self.isTouchEnabled = YES;
-        
+
         [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
         [self initialize];
         CCLOG(@"ENG INIT");
@@ -264,6 +282,9 @@
 }
 -(void) update:(ccTime)deltaTime {
     [chipMunk updateStateWithDeltaTime:deltaTime andListOfGameObjects:NULL];
+    if(chainsaw != nil) {
+     [chainsaw nextFrame:deltaTime andIncrement:50];   
+    }
     [self checkDeath];
 }
 - (void) dealloc {

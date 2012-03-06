@@ -87,14 +87,14 @@
     self.position = ccp(self.position.x, newPosY);
 }
 
-- (void) calculateMaxY{
+- (void) calculateMaxY:(double)deltaTime{
     double maxY = 2 * (screenSize.height / 3);
     double dy = 0.0f;
     if (self.position.y > maxY) {
         dy = self.position.y - maxY;
         self.position = ccp(self.position.x, maxY);
         score += dy;
-        [delegate onUpdateBackground:dy];
+        [delegate onUpdateBackground:dy andDeltaTime:deltaTime];
     }
 }
 -(CGRect)getRealBoundingBox{
@@ -152,7 +152,7 @@
         default:
             break;
     }
-    [self calculateMaxY];
+    [self calculateMaxY:deltaTime];
     
 }
 

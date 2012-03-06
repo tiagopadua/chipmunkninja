@@ -13,15 +13,18 @@
 #import "Chipmunk.h"
 #import "Background.h"
 #import "Thorn.h"
+#import "Chainsaw.h"
 @interface Level1Layer : CCLayer <GameplayLayerDelegate,ChipmunkDelegate,ThornDelegate>{
     Chipmunk *chipMunk;
     Background *background;
     CCSpriteBatchNode *sceneSpriteBatchNode;
+    Chainsaw *chainsaw;
     CGSize screenSize;
     CCMenu *menu;
     CCArray *thorns;
     CCLabelTTF *scoreLabel;
     double lastThornScore;
+    double nextThornPosition;
     BOOL lastThornSide;
     BOOL paraTudo;
     BOOL isTouching;
