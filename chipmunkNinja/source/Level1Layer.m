@@ -1,12 +1,36 @@
-    //
-//  Level1Layer.m
-//  chipmunkNinja
-//
-//  Created by Maxwell Dayvson da Silva on 2/16/12.
-//  Copyright 2012 Terra Networks. All rights reserved.
-//
+/*
+ * Copyright (c) Maxwell Dayvson <dayvson@gmail.com>
+ * Copyright (c) Tiago de Pádua <tiagopadua@gmail.com>
+ * Created 01/2012
+ * All rights reserved.
+ * 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. Neither the name of the University nor the names of its contributors
+ *    may be used to endorse or promote products derived from this software
+ *    without specific prior written permission.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ */
 
 #import "Level1Layer.h"
+#import "GameManager.h"
 
 @implementation Level1Layer
 
@@ -39,7 +63,7 @@
         default:
             break;
     }
-
+    
     return TRUE;
 }
 -(void) createChainsaw {
@@ -55,8 +79,8 @@
                                                       spriteFrameByName:@"chipmunk1.png"]];
     
     chipMunk.delegate = self;
-
-
+    
+    
     [chipMunk setPosition:ccp(screenSize.width/2, 
                               chipMunk.contentSize.height/2)]; 
     
@@ -70,7 +94,7 @@
     [thorns removeObject:thorn];
 }
 -(void) createBackground{
-    background = [[Background node] init:screenSize];
+    background = [Background node];
     [self addChild:background z:0];
     
 }
@@ -114,14 +138,16 @@
     [chipMunk setRotation:-90.0f];
     [chipMunk setPosition:ccp(100,100)];
     
+    
 }
 -(void)onDie  {
     died = TRUE;
     [scoreLabel setString:@"MORREU MALUCO!"];
+    PLAYSOUNDEFFECT(DIE_TRACK);
     [self runAction:[CCSequence actions:
-                        [CCDelayTime actionWithDuration:0.07f],
-                        [CCCallFunc actionWithTarget:self selector:@selector(destroyBody)], nil]];
-
+                     [CCDelayTime actionWithDuration:0.07f],
+                     [CCCallFunc actionWithTarget:self selector:@selector(destroyBody)], nil]];
+    
 }
 
 
@@ -144,8 +170,6 @@
         unsigned int w = intersection.size.width;
         unsigned int h = intersection.size.height;
         unsigned int numPixels = w * h;
-        
-        //NSLog(@"\nintersection = (%u,%u,%u,%u), area = %u",x,y,w,h,numPixels);
         
         // Draw into the RenderTexture
         [_rt beginWithClear:0 g:0 b:0 a:0];
@@ -176,8 +200,6 @@
                 break;
             }
         }
-        
-        // Free buffer memory
         free(buffer);
     }
     
@@ -198,7 +220,7 @@
             return;
         }
     }
-
+    
 }
 
 -(void) createGameObjects{
@@ -217,10 +239,11 @@
     }
     if(chainsaw){
         chainsaw.position = ccp(chainsaw.position.x, chainsaw.position.y - deltaY);
+        PLAYSOUNDEFFECT(@"chainsaw.mp3");
     }
     [self checkAddThorn];
     
-
+    
 }
 #define INITIAL_THORN_COUNT 5
 #define LEFT TRUE
@@ -242,6 +265,12 @@
     chainsaw = nil;
 }
 
+-(void)loadAudio {
+
+//    [[GameManager sharedGameManager] playBackgroundTrack:BACKGROUND_TRACK_LEVEL1];
+    PLAYSOUNDEFFECT(@"chainsaw.mp3");
+}
+
 -(void) initialize {
     lastThornScore = 0.0f;
     lastThornSide = RIGHT;
@@ -261,6 +290,7 @@
     [self addChild:_rt];
     _rt.visible = NO;
     died = FALSE;
+    [self loadAudio];
     [self createRestartButton];    
     [self schedule:@selector(update:)];
 }
@@ -289,7 +319,7 @@
         [chipMunk updateStateWithDeltaTime:deltaTime andListOfGameObjects:NULL];
     }
     if(chainsaw != nil) {
-     [chainsaw nextFrame:deltaTime andIncrement:50];   
+        [chainsaw nextFrame:deltaTime andIncrement:50];   
     }
     [self checkDeath];
 }
