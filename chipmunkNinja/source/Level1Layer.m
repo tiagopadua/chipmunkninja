@@ -31,7 +31,7 @@
 
 #import "Level1Layer.h"
 #import "GameManager.h"
-
+#import "GameConstants.h"
 @implementation Level1Layer
 
 
@@ -45,6 +45,7 @@
 
 - (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event{
     [chipMunk setTouching:FALSE];
+    
 }
 -(void) setChipmunkJump:(CharacterStates)chipmunkState{
     [chipMunk setTouching:TRUE];
@@ -90,7 +91,6 @@
     [chipMunk changeState:kStateBreathing];
 }
 -(void) onDestroyThorn:(id)thorn{
-    CCLOG(@"QUANTIDADE NA LISTA >>>> %d", [thorns count]);
     [thorns removeObject:thorn];
 }
 -(void) createBackground{
@@ -143,7 +143,7 @@
 -(void)onDie  {
     died = TRUE;
     [scoreLabel setString:@"MORREU MALUCO!"];
-    PLAYSOUNDEFFECT(DIE_TRACK);
+    [[GameManager sharedGameManager] playSoundEffect:DIE_TRACK];
     [self runAction:[CCSequence actions:
                      [CCDelayTime actionWithDuration:0.07f],
                      [CCCallFunc actionWithTarget:self selector:@selector(destroyBody)], nil]];
@@ -239,7 +239,7 @@
     }
     if(chainsaw){
         chainsaw.position = ccp(chainsaw.position.x, chainsaw.position.y - deltaY);
-        PLAYSOUNDEFFECT(@"chainsaw.mp3");
+        PLAYSOUNDEFFECT(CHAINSAW_TRACK);
     }
     [self checkAddThorn];
     
@@ -267,8 +267,7 @@
 
 -(void)loadAudio {
 
-//    [[GameManager sharedGameManager] playBackgroundTrack:BACKGROUND_TRACK_LEVEL1];
-    PLAYSOUNDEFFECT(@"chainsaw.mp3");
+    [[GameManager sharedGameManager] playBackgroundTrack:BACKGROUND_TRACK_LEVEL1];
 }
 
 -(void) initialize {

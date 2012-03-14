@@ -69,16 +69,19 @@ typedef enum {
 } GameManagerSoundState;
 
 
-#define BACKGROUND_TRACK_LEVEL1 @"level1.mp3"
-#define JUMP_TRACK @"jump.wav"
-#define DIE_TRACK @"die.wav"
+#define BACKGROUND_TRACK_LEVEL1 @"level1_music.mp3"
+#define JUMP_TRACK @"jump.mp3"
+#define JUMP_END_TRACK @"jump_end.mp3"
+#define DIE_TRACK @"die.mp3"
 #define CHAINSAW_TRACK @"chainsaw.mp3"
 
 #define SFX_NOTLOADED NO
 #define SFX_LOADED YES
 
-#define PLAYSOUNDEFFECT(...) [[GameManager sharedGameManager] playSoundEffect:@#__VA_ARGS__]
-#define STOPSOUNDEFFECT(...) [[GameManager sharedGameManager] stopSoundEffect:__VA_ARGS__]
+#define PLAYSOUNDEFFECT(...) \
+[[GameManager sharedGameManager] playSoundEffect:@#__VA_ARGS__]
+#define STOPSOUNDEFFECT(...) \
+[[GameManager sharedGameManager] stopSoundEffect:__VA_ARGS__]
 
 
 @protocol ThornDelegate

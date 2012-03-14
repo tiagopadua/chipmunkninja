@@ -64,18 +64,19 @@
             CCAnimate *animFJ = [CCAnimate actionWithAnimation:firstJumpAnimation restoreOriginalFrame:NO];
             id callbackFirstJump = [CCCallFuncN actionWithTarget:self selector:@selector(finishedJump:)];
             action = [CCSequence actions:animFJ,callbackFirstJump, nil];
-            PLAYSOUNDEFFECT(JUMP_TRACK);
+            [[GameManager sharedGameManager] playSoundEffect:JUMP_TRACK];
             break;
         case kStateJumping:
             CCLOG(@"Chipmunk->Starting the jump Animation");
             CCAnimate *animJ = [CCAnimate actionWithAnimation:jumpAnimation restoreOriginalFrame:NO];
             id callbackJump = [CCCallFuncN actionWithTarget:self selector:@selector(finishedJump:)];
             action = [CCSequence actions:animJ,callbackJump, nil];
-            PLAYSOUNDEFFECT(JUMP_TRACK);
+            [[GameManager sharedGameManager] playSoundEffect:JUMP_TRACK];
             break;
         case kStateHolding:
             CCLOG(@"Chipmunk->Starting the hold Animation");
             action = [CCAnimate actionWithAnimation:holdAnimation restoreOriginalFrame:NO];
+            [[GameManager sharedGameManager] playSoundEffect:JUMP_END_TRACK];
             break;
         case kStateFlying:
             CCLOG(@"Chipmunk->Starting the fly Animation");
